@@ -1,0 +1,66 @@
+<!-- preview.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Image Preview</title>
+</head>
+
+<body>
+    <h1>Image Preview</h1>
+    <div class="imgContainer">
+        <img id="previewImage" src=" "> <!-- Display the captured image here -->
+        <div class="button-container">
+            <button onclick="retakePhoto()" class="button">Retake</button>
+            <button onclick="submitPhoto()" class="button">Submit</button>
+        </div>
+    </div>
+
+
+    <script>
+        // JavaScript functions to handle button clicks
+        function retakePhoto() {
+            // Redirect back to the previous page (where the camera is)
+            window.location.href = 'index.html';
+        }
+
+        function submitPhoto() {
+            const imageDataUrl = localStorage.getItem('capturedImage');
+
+            // Create a temporary anchor element and trigger a download
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imageDataUrl;
+            downloadLink.download = 'captured_image.jpg'; // You can set your own filename here
+
+            // Append the anchor to the body, click it, and then remove it
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            // Show a popup message
+            const alertMessage = 'Photo submitted and downloaded!';
+            alert(alertMessage);
+
+            // Automatically hide the alert after 5 seconds
+            setTimeout(() => {
+                const alertElement = document.querySelector('.alert');
+                if (alertElement) {
+                    alertElement.style.display = 'none';
+                }
+            }, 5000);
+        }
+
+        window.onload = function () {
+            const imageDataUrl = localStorage.getItem('capturedImage');
+
+            // Set the src attribute of the img element to the captured image data URL
+            document.getElementById('previewImage').src = imageDataUrl;
+        };
+    </script>
+</body>
+
+</html>

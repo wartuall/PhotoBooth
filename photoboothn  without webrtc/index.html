@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Camera Capture</title>
+</head>
+
+<body>
+    <div class="webContainer">
+        <div class="webElement">
+            <video id="camera" autoplay></video>
+            <canvas id="canvas"></canvas> <!-- Hide the canvas -->
+        </div>
+    </div>
+
+    <div class="btnContainer">
+        <div class="btnElement">
+            <button id="capture">Capture</button>
+        </div>
+    </div>
+
+
+    <script>
+        const video = document.getElementById('camera');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('capture');
+
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+            }
+        }
+
+        function capturePhoto() {
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth; // Set canvas size to video size
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const photoDataUrl = canvas.toDataURL('image/jpeg');
+
+            // Store the captured image data URL in local storage
+            localStorage.setItem('capturedImage', photoDataUrl);
+
+            // Redirect to the preview page
+            window.location.href = 'preview.html';
+        }
+
+        startCamera();
+        captureButton.addEventListener('click', capturePhoto);
+    </script>
+</body>
+
+</html>

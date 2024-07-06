@@ -1,0 +1,127 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: #2C3E50;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.webContainer {
+    /* background: gray; */
+    border: solid 5px #84c966;
+    height: 90%;
+    width: 100%;
+    position: relative;
+}
+
+.webElement {
+    margin: auto;
+    /* margin-left: 25%; */
+    border: solid 5px #00ffff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#camera {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Adjust as needed (e.g., 'contain', 'fill', etc.) */
+}
+
+/* Outer container for the button */
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: flex-start;
+    /* Align to the top vertically */
+    height: auto;
+    /* Let the height adjust to content */
+    width: 100%;
+    /* Set width to 100% */
+}
+
+/* Inner button element */
+.btnElement {
+    padding: 1rem;
+    /* Add padding around the button */
+    max-width: 100%;
+    /* Ensure button doesn't overflow */
+}
+
+/* Button styling (customize as needed) */
+.btnElement button {
+    width: 100%;
+    /* Button width as a percentage of its container */
+    font-size: 2rem;
+    /* Adjust font */
+}
+
+.btnElement button:hover {
+    background-color: #4efcff;
+    /* Example background color */
+    color: #00000f;
+    /* Set font color to white */
+    border: none;
+    cursor: pointer;
+}
+canvas{
+    display: none;
+}
+
+
+/* Styling of the submit page */
+
+/* Outer container for the image preview */
+.imgContainer {
+    /* background: gray; */
+    border: solid 5px #84c966;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.button-container {
+    display: flex;
+    position: absolute;
+    justify-content: space-around; /* Equal space between buttons */
+    align-items: center; /* Center vertically */
+    height: auto; /* Let the height adjust to content */
+    width: 100%; /* Set width to 100% */
+   /* border: 5px solid #000;  Add a 5px border */
+    padding: 1rem; /* Add padding around the container */
+}
+
+/* Button styling (customize as needed) */
+.button {
+    flex: 1; /* Equal width for all buttons */
+    max-width: 33%; /* Maximum width of 33% (to prevent overflow) */
+    padding: 1rem; /* Add padding around the buttons */
+    text-align: center; /* Center button text */
+    background: #000; /* Example background color */
+    color: #ffffff; /* Example text color */
+    font-size: 3rem;
+    border: none;
+    cursor: pointer;
+}
+#previewImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Optional: Hover effect */
+.button:hover {
+    background-color: #3986d7; /* Darker background color on hover */
+}
